@@ -2,7 +2,10 @@ package etl
 
 import "strings"
 
-func Transform(oldScoring map[int][]string) map[string]int {
+type legacyScores map[int][]string
+type newScores map[string]int
+
+func Transform(oldScoring legacyScores) newScores {
 	m := make(map[string]int)
 	for score, letters := range oldScoring {
 		for _, l := range letters {
