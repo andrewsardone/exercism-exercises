@@ -1,5 +1,5 @@
 package hamming
 
-func Distance(strandA string, strandB string) int {
+func Distance(strandA, strandB string) int {
 	return 0
 }
