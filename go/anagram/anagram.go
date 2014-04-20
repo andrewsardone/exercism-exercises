@@ -7,20 +7,27 @@ import (
 
 func Detect(subject string, candidates []string) []string {
 	matches := make([]string, 0)
-	comparableSubject := toDetectComparable(subject)
 	for _, c := range candidates {
-		if len(subject) != len(c) {
-			continue
-		}
-		if isSameWord(subject, c) {
-			continue
-		}
-		comparableCandidate := toDetectComparable(c)
-		if comparableSubject == comparableCandidate {
+		if isAnagram(subject, c) {
 			matches = append(matches, strings.ToLower(c))
 		}
 	}
 	return matches
+}
+
+func isAnagram(subject, candidate string) (isAnagram bool) {
+	if len(subject) != len(candidate) {
+		return false
+	}
+	if isSameWord(subject, candidate) {
+		return false
+	}
+	comparableSubject := toDetectComparable(subject)
+	comparableCandidate := toDetectComparable(candidate)
+	if comparableSubject == comparableCandidate {
+		isAnagram = true
+	}
+	return isAnagram
 }
 
 func isSameWord(w1, w2 string) bool {
