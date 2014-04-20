@@ -7,15 +7,15 @@ import (
 
 func Detect(subject string, candidates []string) []string {
 	matches := make([]string, 0)
-	comparableSubject := ToDetectComparable(subject)
+	comparableSubject := toDetectComparable(subject)
 	for _, c := range candidates {
 		if len(subject) != len(c) {
 			continue
 		}
-		if IsSameWord(subject, c) {
+		if isSameWord(subject, c) {
 			continue
 		}
-		comparableCandidate := ToDetectComparable(c)
+		comparableCandidate := toDetectComparable(c)
 		if comparableSubject == comparableCandidate {
 			matches = append(matches, strings.ToLower(c))
 		}
@@ -23,15 +23,15 @@ func Detect(subject string, candidates []string) []string {
 	return matches
 }
 
-func IsSameWord(w1, w2 string) bool {
+func isSameWord(w1, w2 string) bool {
 	return strings.ToLower(w1) == strings.ToLower(w2)
 }
 
-func ToDetectComparable(s string) string {
-	return ToSortString(strings.ToLower(s))
+func toDetectComparable(s string) string {
+	return toSortString(strings.ToLower(s))
 }
 
-func ToSortString(s string) string {
+func toSortString(s string) string {
 	ss := strings.Split(s, "")
 	sort.Strings(ss)
 	return strings.Join(ss, "")
