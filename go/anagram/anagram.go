@@ -35,10 +35,10 @@ func isSameWord(w1, w2 string) bool {
 }
 
 func toDetectComparable(s string) string {
-	return toSortString(strings.ToLower(s))
+	return toSortedString(strings.ToLower(s))
 }
 
-func toSortString(s string) string {
+func toSortedString(s string) string {
 	ss := strings.Split(s, "")
 	sort.Strings(ss)
 	return strings.Join(ss, "")
