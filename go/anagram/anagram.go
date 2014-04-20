@@ -6,7 +6,7 @@ import (
 )
 
 func Detect(subject string, candidates []string) []string {
-	matches := make([]string, 0)
+	matches := []string{}
 	for _, c := range candidates {
 		if isAnagram(subject, c) {
 			matches = append(matches, strings.ToLower(c))
