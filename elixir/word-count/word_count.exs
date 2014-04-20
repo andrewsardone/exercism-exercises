@@ -14,11 +14,8 @@ defmodule Words do
   end
 
   defp count_words(words) do
-    Enum.reduce(words, HashDict.new, fn(w, memo) ->
-      Dict.put(memo, w, cond do
-        Dict.has_key?(memo, w) -> memo[w]
-        true -> 0
-      end + 1)
-    end)
+    Enum.reduce words, HashDict.new, fn(w, memo) ->
+      Dict.update(memo, w, 1, &(&1 + 1))
+    end
   end
 end
