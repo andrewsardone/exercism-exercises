@@ -6,14 +6,19 @@ defmodule Words do
   """
   @spec count(String.t) :: HashDict.t
   def count(sentence) do
-    Regex.scan(~r/[\pL\pN-]+/, sentence)
-      |> List.flatten
-      |> Enum.map(fn(x) -> String.downcase(x) end)
-      |> Enum.reduce(HashDict.new, fn(w, memo) ->
-           Dict.put(memo, w, cond do
-             Dict.has_key?(memo, w) -> memo[w]
-             true -> 0
-           end + 1)
-         end)
+    sentence |> collect_words |> count_words
+  end
+
+  defp collect_words(sentence) do
+    Regex.scan(~r/[\pL\pN-]+/, String.downcase(sentence)) |> List.flatten
+  end
+
+  defp count_words(words) do
+    Enum.reduce(words, HashDict.new, fn(w, memo) ->
+      Dict.put(memo, w, cond do
+        Dict.has_key?(memo, w) -> memo[w]
+        true -> 0
+      end + 1)
+    end)
   end
 end
