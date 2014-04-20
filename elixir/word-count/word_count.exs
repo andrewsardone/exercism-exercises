@@ -6,7 +6,7 @@ defmodule Words do
   """
   @spec count(String.t) :: HashDict.t
   def count(sentence) do
-    Regex.scan(~r/\w(?:[-\w]*)?/, sentence)
+    Regex.scan(~r/[\pL\pN-]+/, sentence)
       |> List.flatten
       |> Enum.map(fn(x) -> String.downcase(x) end)
       |> Enum.reduce(HashDict.new, fn(w, memo) ->
