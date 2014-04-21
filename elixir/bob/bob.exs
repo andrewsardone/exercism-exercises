@@ -13,6 +13,6 @@ defmodule Teenager do
   defp is_a_question?(s), do: String.ends_with?(s, "?")
 
   defp is_yelling?(s) do
-    String.upcase(s) == s && Regex.run(%r/\p{L}/, s)
+    String.upcase(s) == s && Regex.run(~r/\p{L}/, s)
   end
 end
