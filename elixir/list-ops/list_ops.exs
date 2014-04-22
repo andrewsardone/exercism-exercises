@@ -25,8 +25,15 @@ defmodule ListOps do
   defp do_map([h|t], f, accm), do: do_map(t, f, [f.(h)|accm])
 
   @spec filter(list, (any -> as_boolean(term))) :: list
-  def filter(l, f) do
+  def filter(l, f), do: do_filter(l, f, [])
 
+  defp do_filter([], _, accm), do: reverse(accm)
+  defp do_filter([h|t], f, accm) do
+    if f.(h) do
+      do_filter(t, f, [h|accm])
+    else
+      do_filter(t, f, accm)
+    end
   end
 
   @type acc :: any
