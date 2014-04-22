@@ -7,9 +7,10 @@ defmodule ListOps do
   # automatically important`) and so shouldn't be used either.
  
   @spec count(list) :: non_neg_integer
-  def count(l) do
-    
-  end
+  def count(l), do: do_count(l, 0)
+
+  defp do_count([], acc), do: acc
+  defp do_count([_|t], acc), do: do_count(t, acc + 1)
 
   @spec reverse(list) :: list
   def reverse(l) do
