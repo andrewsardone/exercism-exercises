@@ -3,17 +3,20 @@ package binary
 import "math"
 
 func ToDecimal(binary string) (decimal int) {
-	for i := len(binary) - 1; i > -1; i-- {
-		character := binary[i]
-		digit := string(character)
-		if digit == "1" || digit == "0" {
-			if digit == "1" {
-				decimal += int(math.Exp2(float64((len(binary) - 1) - i)))
-			}
-		} else {
+	highestDigitIndex := len(binary) - 1
+	for i := highestDigitIndex; i >= 0; i-- {
+		digit := string(binary[i])
+		if isInvalidInput(digit) {
 			decimal = 0
 			break
 		}
+		if digit == "1" {
+			decimal += int(math.Exp2(float64(highestDigitIndex - i)))
+		}
 	}
 	return decimal
+}
+
+func isInvalidInput(i string) bool {
+	return !(i == "1" || i == "0")
 }
