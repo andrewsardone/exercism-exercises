@@ -5,7 +5,7 @@ defmodule ListOps do
   # 
   # Note that `++` is a function from an external module (Kernel, which is
   # automatically important`) and so shouldn't be used either.
- 
+
   @spec count(list) :: non_neg_integer
   def count(l), do: do_count(l, 0)
 
@@ -13,9 +13,10 @@ defmodule ListOps do
   defp do_count([_|t], acc), do: do_count(t, acc + 1)
 
   @spec reverse(list) :: list
-  def reverse(l) do
-    
-  end
+  def reverse(l), do: do_reverse(l, [])
+
+  defp do_reverse([], acc), do: acc
+  defp do_reverse([head|tail], acc), do: do_reverse(tail, [head|acc])
 
   @spec map(list, (any -> any)) :: list
   def map(l, f) do
