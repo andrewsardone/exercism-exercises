@@ -49,7 +49,5 @@ defmodule ListOps do
   defp do_append(a, [h|t], accm), do: do_append(a, t, [h|accm])
 
   @spec concat([[any]]) :: [any]
-  def concat(ll) do
-
-  end
+  def concat(ll), do: reverse(ll) |> reduce([], &(append(&1, &2)))
 end
