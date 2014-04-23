@@ -42,9 +42,11 @@ defmodule ListOps do
   def reduce([h|t], acc, f), do: reduce(t, f.(h, acc), f)
 
   @spec append(list, list) :: list
-  def append(a, b) do
+  def append(a, b), do: do_append(a, b, [])
 
-  end
+  defp do_append([], [], accm), do: reverse(accm)
+  defp do_append([h|t], b, accm), do: do_append(t, b, [h|accm])
+  defp do_append(a, [h|t], accm), do: do_append(a, t, [h|accm])
 
   @spec concat([[any]]) :: [any]
   def concat(ll) do
