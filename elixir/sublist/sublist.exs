@@ -4,6 +4,13 @@ defmodule Sublist do
   and if not whether it is equal or unequal to the second list.
   """
   def compare(a, b) do
-  
+    case { length(a), length(b) } do
+      { la, lb } when la < lb ->
+        :sublist
+      { la, lb } when la > lb ->
+        :superlist
+      { la, lb } when la == lb ->
+        if a == b, do: :equal, else: :unequal
+    end
   end
 end
