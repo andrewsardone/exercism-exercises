@@ -45,22 +45,22 @@ defmodule AnagramTest do
   end
 
   test "detect anagrams with case-insensitive subject" do
-    # matches = Anagram.match "Orchestra", %w(cashregister carthorse radishes)
-    # assert matches == ["carthorse"]
+    matches = Anagram.match "Orchestra", %w(cashregister carthorse radishes)
+    assert matches == ["carthorse"]
   end
 
   test "detect anagrams with case-insensitive candidate" do
-    # matches = Anagram.match "orchestra", %w(cashregister Carthorse radishes)
-    # assert matches == ["Carthorse"]
+    matches = Anagram.match "orchestra", %w(cashregister Carthorse radishes)
+    assert matches == ["Carthorse"]
   end
 
   test "anagrams must not be the source word" do
-    # matches = Anagram.match "corn", ["corn", "dark", "Corn", "rank", "CORN", "cron", "park"]
-    # assert matches == ["cron"]
+    matches = Anagram.match "corn", ["corn", "dark", "Corn", "rank", "CORN", "cron", "park"]
+    assert matches == ["cron"]
   end
 
   test "do not detect words based on checksum" do
-    # matches = Anagram.match "mass", ["last"]
-    # assert matches == []
+    matches = Anagram.match "mass", ["last"]
+    assert matches == []
   end
 end
