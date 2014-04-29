@@ -28,6 +28,8 @@ defmodule DNA do
   """
   @spec nucleotide_counts([char]) :: HashDict.t
   def nucleotide_counts(strand) do
- 
+    Enum.reduce strand, HashDict.new([{?A, 0}, {?T, 0}, {?C, 0}, {?G, 0}]), fn(nucleotide, memo) ->
+      Dict.update(memo, nucleotide, 1, &(&1 + 1))
+    end
   end
 end
