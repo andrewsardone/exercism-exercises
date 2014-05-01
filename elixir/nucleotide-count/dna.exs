@@ -28,7 +28,7 @@ defmodule DNA do
   """
   @spec nucleotide_counts([char]) :: HashDict.t
   def nucleotide_counts(strand) do
-    HashDict.new [{?A, 0}, {?T, 0}, {?C, 0}, {?G, 0}] |> Enum.map fn {nucl, _} ->
+    HashDict.new [{?A, 0}, {?T, 0}, {?C, 0}, {?G, 0}], fn {nucl, _} ->
       {nucl, count(strand, nucl)}
     end
   end
