@@ -9,16 +9,13 @@ defmodule DNA do
   """
   @spec to_rna([char]) :: [char]
   def to_rna(dna) do
-    do_dna_rna_conversion(dna)
-  end
-
-  defp do_dna_rna_conversion([]), do: []
-  defp do_dna_rna_conversion([h|t]) do
-    [case h do
-       ?G -> ?C
-       ?C -> ?G
-       ?T -> ?A
-       ?A -> ?U
-     end|do_dna_rna_conversion(t)]
+    Enum.map dna, fn(nucl) ->
+      case nucl do
+        ?G -> ?C
+        ?C -> ?G
+        ?T -> ?A
+        ?A -> ?U
+      end
+    end
   end
 end
