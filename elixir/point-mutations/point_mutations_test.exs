@@ -15,26 +15,26 @@ defmodule DNATest do
   end
 
   test "no difference between identical strands" do
-    # assert 0 == DNA.hamming_distance('GGACTGA', 'GGACTGA')
+    assert 0 == DNA.hamming_distance('GGACTGA', 'GGACTGA')
   end
 
   test "hamming distance in off by one strand" do
-    # assert 19 == DNA.hamming_distance('GGACGGATTCTGACCTGGACTAATTTTGGGG', 'AGGACGGATTCTGACCTGGACTAATTTTGGGG')
+    assert DNA.hamming_distance('GGACGGATTCTGACCTGGACTAATTTTGGGG', 'AGGACGGATTCTGACCTGGACTAATTTTGGGG') == 19
   end
 
   test "small hamming distance in middle somewhere" do
-    # assert 1 == DNA.hamming_distance('GGACG', 'GGTCG')
+    assert 1 == DNA.hamming_distance('GGACG', 'GGTCG')
   end
 
   test "larger distance" do
-    # assert 2 == DNA.hamming_distance('ACCAGGG', 'ACTATGG')
+    assert 2 == DNA.hamming_distance('ACCAGGG', 'ACTATGG')
   end
 
   test "ignores extra length on other strand when longer" do
-    # assert 3 == DNA.hamming_distance('AAACTAGGGG', 'AGGCTAGCGGTAGGAC')
+    assert 3 == DNA.hamming_distance('AAACTAGGGG', 'AGGCTAGCGGTAGGAC')
   end
 
   test "ignores extra length on original strand when longer" do
-    # assert 5 == DNA.hamming_distance('GACTACGGACAGGGTAGGGAAT', 'GACATCGCACACC')
+    assert 5 == DNA.hamming_distance('GACTACGGACAGGGTAGGGAAT', 'GACATCGCACACC')
   end
 end
