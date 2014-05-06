@@ -6,15 +6,19 @@ import (
 
 func Convert(input int) string {
 	rainDrops := ""
+	conversions := []struct {
+		factor int
+		sound  string
+	}{
+		{3, "Pling"},
+		{5, "Plang"},
+		{7, "Plong"},
+	}
 
-	if input%3 == 0 {
-		rainDrops += "Pling"
-	}
-	if input%5 == 0 {
-		rainDrops += "Plang"
-	}
-	if input%7 == 0 {
-		rainDrops += "Plong"
+	for _, c := range conversions {
+		if input%c.factor == 0 {
+			rainDrops += c.sound
+		}
 	}
 
 	if len(rainDrops) == 0 {
