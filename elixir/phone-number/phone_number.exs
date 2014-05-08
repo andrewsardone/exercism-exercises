@@ -18,7 +18,8 @@ defmodule Phone do
   """
   @spec number(String.t) :: String.t
   def number(raw) do
-
+    stripped = String.replace(raw, ~r/[^\w]/, "")
+    if String.length(stripped) < 10, do: "0000000000", else: stripped
   end
 
   @doc """
@@ -40,7 +41,11 @@ defmodule Phone do
   """
   @spec area_code(String.t) :: String.t
   def area_code(raw) do
-
+    number(raw) |> String.slice(if String.contains?(raw, "+") do
+      Range.new(1, 3)
+    else
+      Range.new(0, 2)
+    end)
   end
 
   @doc """
@@ -62,6 +67,24 @@ defmodule Phone do
   """
   @spec pretty(String.t) :: String.t
   def pretty(raw) do
+    "(#{area_code(raw)}) #{prefix(raw)}-#{line_number(raw)}"
+  end
 
+  @spec prefix(String.t) :: String.t
+  defp prefix(raw) do
+    number(raw) |> String.slice(if String.contains?(raw, "+") do
+      Range.new(4, 6)
+    else
+      Range.new(3, 5)
+    end)
+  end
+
+  @spec line_number(String.t) :: String.t
+  defp line_number(raw) do
+    number(raw) |> String.slice(if String.contains?(raw, "+") do
+      Range.new(7, 100)
+    else
+      Range.new(6, 100)
+    end)
   end
 end
