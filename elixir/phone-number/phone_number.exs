@@ -18,9 +18,18 @@ defmodule Phone do
   """
   @spec number(String.t) :: String.t
   def number(raw) do
-    stripped = String.replace(raw, ~r/[^\w]/, "")
-    if String.length(stripped) < 10, do: "0000000000", else: stripped
+    case clean_number_list(raw) do
+      nil -> "0000000000"
+      y -> to_string y
+    end
   end
+
+  defp clean_number_list(s) when is_bitstring(s) do
+    s |> to_char_list |> Enum.filter(&(&1 >= ?0 and &1 <= ?9)) |> clean_number_list
+  end
+  defp clean_number_list(l) when length(l) == 10, do: l
+  defp clean_number_list([?1|t]) when length(t) == 10, do: t
+  defp clean_number_list(_), do: nil
 
   @doc """
   Extract the area code from a phone number
@@ -41,11 +50,7 @@ defmodule Phone do
   """
   @spec area_code(String.t) :: String.t
   def area_code(raw) do
-    number(raw) |> String.slice(if String.contains?(raw, "+") do
-      Range.new(1, 3)
-    else
-      Range.new(0, 2)
-    end)
+    number(raw) |> String.slice(0, 3)
   end
 
   @doc """
@@ -72,19 +77,11 @@ defmodule Phone do
 
   @spec prefix(String.t) :: String.t
   defp prefix(raw) do
-    number(raw) |> String.slice(if String.contains?(raw, "+") do
-      Range.new(4, 6)
-    else
-      Range.new(3, 5)
-    end)
+    number(raw) |> String.slice(3, 3)
   end
 
   @spec line_number(String.t) :: String.t
   defp line_number(raw) do
-    number(raw) |> String.slice(if String.contains?(raw, "+") do
-      Range.new(7, 100)
-    else
-      Range.new(6, 100)
-    end)
+    number(raw) |> String.slice(6, 4)
   end
 end
