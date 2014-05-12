@@ -7,8 +7,8 @@ func Square(input int) uint64 {
 }
 
 func Total() (total uint64) {
-	for i := 1; i <= 64; i++ {
-		total += Square(i)
-	}
-	return total
+	// Since we're totalling all the grains on the chessboard (64 squares),
+	// this equals a 64 bit unsigned integer with all 1 bits, i.e., the
+	// MaxUint64.
+	return math.MaxUint64
 }
