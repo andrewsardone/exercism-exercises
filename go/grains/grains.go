@@ -3,7 +3,7 @@ package grains
 import "math"
 
 func Square(input int) uint64 {
-	return uint64(math.Exp2(float64(input))) - uint64(math.Exp2(float64(input-1)))
+	return 1 << uint(input-1)
 }
 
 func Total() (total uint64) {
