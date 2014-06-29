@@ -4,7 +4,9 @@ defmodule Anagram do
   """
   @spec match(String.t, [String.t]) :: [String.t]
   def match(base, candidates) do
-    Enum.filter(candidates, &is_anagram?(String.downcase(base), String.downcase(&1)))
+    candidates |> Enum.filter(
+        &is_anagram?(String.downcase(base), String.downcase(&1))
+    )
   end
 
   defp is_anagram?(w, w), do: false
