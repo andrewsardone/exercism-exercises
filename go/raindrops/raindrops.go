@@ -4,16 +4,17 @@ import (
 	"strconv"
 )
 
+var conversions = []struct {
+	factor int
+	sound  string
+}{
+	{3, "Pling"},
+	{5, "Plang"},
+	{7, "Plong"},
+}
+
 func Convert(input int) string {
 	rainDrops := ""
-	conversions := []struct {
-		factor int
-		sound  string
-	}{
-		{3, "Pling"},
-		{5, "Plang"},
-		{7, "Plong"},
-	}
 
 	for _, c := range conversions {
 		if input%c.factor == 0 {
