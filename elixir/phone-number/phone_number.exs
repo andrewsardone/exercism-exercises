@@ -72,16 +72,17 @@ defmodule Phone do
   """
   @spec pretty(String.t) :: String.t
   def pretty(raw) do
-    "(#{area_code(raw)}) #{prefix(raw)}-#{line_number(raw)}"
+    number = number(raw)
+    "(#{area_code(number)}) #{prefix(number)}-#{line_number(number)}"
   end
 
   @spec prefix(String.t) :: String.t
   defp prefix(raw) do
-    number(raw) |> String.slice(3, 3)
+    String.slice(raw, 3, 3)
   end
 
   @spec line_number(String.t) :: String.t
   defp line_number(raw) do
-    number(raw) |> String.slice(6, 4)
+    String.slice(raw, 6, 4)
   end
 end
