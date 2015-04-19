@@ -4,12 +4,21 @@ public struct Year {
     public var isLeapYear = false;
 
     public init(calendarYear: Int) {
-        if (calendarYear == 1996) {
-            isLeapYear = true
-        }
+        isLeapYear = isLeapYear(calendarYear)
+    }
 
-        if (calendarYear == 2400) {
-            isLeapYear = true
+    func isLeapYear(calendarYear: Int) -> Bool {
+        if calendarYear % 400 == 0 {
+            return true
+        }
+        else if calendarYear % 100 == 0 {
+            return false
+        }
+        else if calendarYear % 4 == 0 {
+            return true
+        }
+        else {
+            return false
         }
     }
 }
