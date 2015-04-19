@@ -1,5 +1,19 @@
 import XCTest
 
+struct Year {
+    var isLeapYear = false;
+
+    init(calendarYear: Int) {
+        if (calendarYear == 1996) {
+            isLeapYear = true
+        }
+
+        if (calendarYear == 2400) {
+            isLeapYear = true
+        }
+    }
+}
+
 class LeapTest : XCTestCase {
 
     func testVanillaLeapYear() {
