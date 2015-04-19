@@ -14,6 +14,7 @@
 		499D4DF91AE4555400C51BE6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 499D4DF71AE4555400C51BE6 /* LaunchScreen.xib */; };
 		499D4E051AE4555400C51BE6 /* LeapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D4E041AE4555400C51BE6 /* LeapTests.swift */; };
 		499D4E111AE45A4C00C51BE6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 499D4E101AE45A4C00C51BE6 /* README.md */; };
+		499D4E0F1AE456F200C51BE6 /* Leap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D4E0E1AE456F200C51BE6 /* Leap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		499D4E031AE4555400C51BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		499D4E041AE4555400C51BE6 /* LeapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeapTests.swift; sourceTree = "<group>"; };
 		499D4E101AE45A4C00C51BE6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		499D4E0E1AE456F200C51BE6 /* Leap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leap.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		499D4DE61AE4555400C51BE6 /* Frameworks */ = {
@@ -84,6 +87,7 @@
 				499D4DF21AE4555400C51BE6 /* Main.storyboard */,
 				499D4DF51AE4555400C51BE6 /* Images.xcassets */,
 				499D4DF71AE4555400C51BE6 /* LaunchScreen.xib */,
+				499D4E0E1AE456F200C51BE6 /* Leap.swift */,
 				499D4DEC1AE4555400C51BE6 /* Supporting Files */,
 			);
 			path = Leap;
@@ -214,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499D4E0F1AE456F200C51BE6 /* Leap.swift in Sources */,
 				499D4DF11AE4555400C51BE6 /* ViewController.swift in Sources */,
 				499D4DEF1AE4555400C51BE6 /* AppDelegate.swift in Sources */,
 			);
@@ -413,6 +418,7 @@
 				499D4E0A1AE4555400C51BE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		499D4E0B1AE4555400C51BE6 /* Build configuration list for PBXNativeTarget "LeapTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +427,7 @@
 				499D4E0D1AE4555400C51BE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
