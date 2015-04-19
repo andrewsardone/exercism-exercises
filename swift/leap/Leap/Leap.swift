@@ -8,17 +8,11 @@ public struct Year {
     }
 
     func isLeapYear(calendarYear: Int) -> Bool {
-        if calendarYear % 400 == 0 {
-            return true
-        }
-        else if calendarYear % 100 == 0 {
-            return false
-        }
-        else if calendarYear % 4 == 0 {
-            return true
-        }
-        else {
-            return false
+        switch calendarYear {
+        case _ where calendarYear % 400 == 0: return true
+        case _ where calendarYear % 100 == 0: return false
+        case _ where calendarYear % 4 == 0: return true
+        default: return false
         }
     }
 }
